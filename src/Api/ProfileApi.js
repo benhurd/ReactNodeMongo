@@ -4,10 +4,16 @@ class ProfileApi{
 
     static GetProfile(username)
     {
-        debugger;
-        let Apidata=axios.get('/GetProfile/'+encodeURI(username));
+        let Apidata=axios.get('/ApiGetProfile/'+encodeURI(username));
         return Apidata;
     }
+
+    static UpdateProfile(Profile)
+    {
+        let Apidata=axios.post('/ApiUpdateProfile',Profile);
+        return Apidata;
+    } 
 }
+
 
 export default ProfileApi;

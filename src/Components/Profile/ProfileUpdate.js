@@ -3,6 +3,7 @@ import {connect} from'react-redux';
 import * as ProfileAction from '../../Action/ProfileAction';
 import {bindActionCreators} from 'redux';
 import TextInput from '../Common/TextInput';
+import toaster from 'toastr';
 
 class ProfileUpdate extends React.Component{
     constructor(props,context)
@@ -26,10 +27,26 @@ class ProfileUpdate extends React.Component{
         return this.setState({Profile:Profile});
     }
 
+
     SaveProfile(event)
     {
-
+        event.preventDefault();
+        this.setState({saving:true});
+        this.props.actions.UpdateProfile(this.state.Profile)
+            .then(()=>{
+                this.setState({saving:false});
+                toaster.success('Profile Saved');
+            })
+            .catch(err=>{
+                toaster.error(err.response.data);
+                this.setState({saving:false});
+            });
     }
+
+    // redirect(){
+    //     this.setState({saving:false});
+    //     toaster.success('Profile Saved');
+    // }
 
     render(){
         return(
@@ -88,7 +105,8 @@ function mapDispatchToProps(dispatch)
 }
 
 ProfileUpdate.propTypes={
-    Profile:PropTypes.object.isRequired
+    Profile:PropTypes.object.isRequired,
+    actions:PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileUpdate);
