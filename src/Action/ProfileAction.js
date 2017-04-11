@@ -13,12 +13,24 @@ export function LoadProfileSuccess(Profile)
 
 export function LoadProfile(UserName)
 {
-    debugger;
     return function(dispatch)
     {
         return ProfileApi.GetProfile(UserName)
         .then(x=>{
             dispatch(LoadProfileSuccess(x.data));
+        }).catch(error=>{
+            throw(error);
+        });
+    };
+}
+
+export function UpdateProfile(Profile)
+{
+    return function(dispatch)
+    {
+        return ProfileApi.UpdateProfile(Profile)
+        .then(x=>{
+            dispatch(UpdateProfileSuccess(x.data));
         }).catch(error=>{
             throw(error);
         });

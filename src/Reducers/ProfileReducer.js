@@ -3,7 +3,6 @@ import InitialState from './InitialState';
 
 export default function ProfileReducer(state = InitialState.ProfileState ,action)
 {
-    debugger;
     switch(action.type)
     {
         case Types.GET_PROFILE_SUCCESS:

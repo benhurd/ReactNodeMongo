@@ -8,6 +8,7 @@ import './Style/Style.css';
 import ConfigureStore from './Store/ConfigureStore';
 import {Provider} from 'react-redux';
 import {LoadProfile} from './Action/ProfileAction';
+import '../node_modules/toastr/build/toastr.min.css';
 
 
 const store =ConfigureStore();
