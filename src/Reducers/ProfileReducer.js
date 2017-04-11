@@ -14,4 +14,5 @@ export default function ProfileReducer(state = InitialState.ProfileState ,action
         default:
             return state;
     }
+    
 }

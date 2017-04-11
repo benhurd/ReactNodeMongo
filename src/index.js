@@ -10,7 +10,6 @@ import {Provider} from 'react-redux';
 import {LoadProfile} from './Action/ProfileAction';
 import '../node_modules/toastr/build/toastr.min.css';
 
-
 const store =ConfigureStore();
 store.dispatch(LoadProfile("benhur.davies@cognizant.com"));
 
