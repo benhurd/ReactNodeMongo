@@ -19,6 +19,11 @@ class ProfileUpdate extends React.Component{
          this.SaveProfile=this.SaveProfile.bind(this);
     }
 
+    componentWillReceiveProps(nextProps)
+    {
+        this.setState({Profile:Object.assign({},nextProps.Profile)});
+    }
+
     UpdateProfileState(event)
     {
         const field=event.target.name;
